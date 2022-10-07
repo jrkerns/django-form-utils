@@ -6,15 +6,11 @@ parts of this code taken from http://www.djangosnippets.org/snippets/934/
  - thanks baumer1122
 
 """
-from __future__ import unicode_literals
-
 import posixpath
 
 from django import forms
 from django.conf import settings
 from django.utils.safestring import mark_safe
-
-from .settings import JQUERY_URL
 
 try:
     from sorl.thumbnail import get_thumbnail
@@ -97,7 +93,7 @@ class AutoResizeTextarea(forms.Textarea):
     A Textarea widget that automatically resizes to accomodate its contents.
     """
     class Media:
-        js = (JQUERY_URL,
+        js = (settings.JQUERY_URL,
               root('form_utils/js/jquery.autogrow.js'),
               root('form_utils/js/autoresize.js'))
 

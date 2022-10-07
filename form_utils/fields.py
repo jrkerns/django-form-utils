@@ -2,16 +2,13 @@
 from __future__ import unicode_literals
 
 from django import forms
-from django.utils.encoding import python_2_unicode_compatible
-from django.utils import six
 
 from .widgets import ClearableFileInput
 
 
-@python_2_unicode_compatible
 class FakeEmptyFieldFile(object):
     """
-    A fake FieldFile that will convice a FileField model field to
+    A fake FieldFile that will convince a FileField model field to
     actually replace an existing file name with an empty string.
 
     FileField.save_form_data only overwrites its instance data if the
@@ -33,7 +30,7 @@ class FakeEmptyFieldFile(object):
 
     """
     def __str__(self):
-        return six.text_type('')
+        return ''
     _committed = True
 
 

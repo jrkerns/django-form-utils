@@ -9,11 +9,7 @@ from __future__ import unicode_literals
 from copy import deepcopy
 
 from django import forms
-try:
-    from django.forms.utils import flatatt, ErrorDict
-except ImportError: # Django < 1.9 compatibility
-    from django.forms.util import flatatt, ErrorDict
-from django.utils import six
+from django.forms.utils import flatatt, ErrorDict
 from django.utils.safestring import mark_safe
 
 
@@ -43,7 +39,7 @@ class Fieldset(object):
         self.name = name
 
     def _errors(self):
-        return ErrorDict(((k, v) for (k, v) in six.iteritems(self.form.errors)
+        return ErrorDict(((k, v) for (k, v) in self.form.errors.items()
                           if k in [f.name for f in self.boundfields]))
     errors = property(_errors)
 
